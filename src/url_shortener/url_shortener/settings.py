@@ -20,13 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
-#'^_=tpdrijpl4)+bbql62wbsxgm)*gk47guw^h$2wf2t35tmji!'
+SECRET_KEY ='^_=tpdrijpl4)+bbql62wbsxgm)*gk47guw^h$2wf2t35tmji!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://64fadec6eb8c510007cad66f--smarturlshortener.netlify.app/']
+ALLOWED_HOSTS = ['https://smarturlshortener.netlify.app/']
 
 
 # Application definition
