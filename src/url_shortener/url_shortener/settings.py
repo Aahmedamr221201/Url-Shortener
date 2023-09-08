@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['http://shooooort.club/']
+ALLOWED_HOSTS = ['https://64fadec6eb8c510007cad66f--smarturlshortener.netlify.app/']
 
 
 # Application definition
