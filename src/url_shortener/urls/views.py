@@ -16,7 +16,7 @@ def about_page_view(request):
 
 def home_page_view(request):
 	my_form = UrlForm()
-	base_url = "http://127.0.0.1:8000/"
+	base_url = "https://urlshortener-yosbv.ondigitalocean.app/"
 	unique_id=""
 	short_url= ""
 	if request.method == "POST":
