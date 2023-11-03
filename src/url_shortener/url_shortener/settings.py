@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,14 +20,41 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY ='^_=tpdrijpl4)+bbql62wbsxgm)*gk47guw^h$2wf2t35tmji!'
+SECRET_KEY = os.environ.get("SECRET_KEY","^_=tpdrijpl4)+bbql62wbsxgm)*gk47guw^h$2wf2t35tmji!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = str(os.environ.get("DEBUG")) != 1
 
-ALLOWED_HOSTS = ['https://smarturlshortener.netlify.app/']
+ALLOWED_HOSTS = []
+if not DEBUG:
+    new_allowed_hosts = os.environ.get("ALLOWED_HOSTS")
+    ALLOWED_HOSTS.append(new_allowed_hosts)
 
+POSTGRES_DB = os.environ.get("POSTGRES_DB")
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+POSTGRES_USER = os.environ.get("POSTGRES_USER")
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
 
+POSTGRES_READY = (
+    POSTGRES_DB is not None
+    and POSTGRES_PASSWORD is not None
+    and POSTGRES_USER is not None
+    and POSTGRES_HOST is not None
+    and POSTGRES_PORT is not None
+)
+
+if POSTGRES_READY:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
+    }   
 # Application definition
 
 INSTALLED_APPS = [
