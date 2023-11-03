@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY","^_=tpdrijpl4)+bbql62wbsxgm)*gk47guw^h$2wf2t35tmji!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) != 1
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.ondigitalocean.app']
 if not DEBUG:
     new_allowed_hosts = os.environ.get("ALLOWED_HOSTS")
     ALLOWED_HOSTS.append(new_allowed_hosts)
